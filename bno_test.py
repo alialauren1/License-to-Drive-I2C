@@ -20,7 +20,10 @@ while True:
         Euler = I2C_obj.mem_read(6,scan1[0],0x1A)
         
         # unpack
-        print('Euler (X,Y,Z) =',struct.unpack('<hhh',Euler))
+        X,Y,Z = struct.unpack('<hhh',Euler)
+        
+        # print in degrees
+        print('Euler (X,Y,Z) =',X/16,Y/16,Z/16)
     
     except KeyboardInterrupt:
         break
